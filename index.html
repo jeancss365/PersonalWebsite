@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Cheng - 鄭晨恩 | 文化策展 × 品牌行銷</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #999999;
+            --primary-focus: #888888;
+            --primary-light: #aaaaaa;
+            --accent-warm: #d4c5b9;
+            --accent-light-blue: #f5f3f0;
+            --ink: #2a2a2a;
+            --body-text: #4a4a4a;
+            --body-muted: #8a8a8a;
+            --canvas: #fefdfb;
+            --surface-light: #f5f3f0;
+            --surface-pale: #faf9f7;
+            --divider: #ebe9e6;
+            --hairline: #ddd9d3;
+        }
+
+        body {
+            font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
+            background: var(--canvas);
+            color: var(--body-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+        }
+
+        p, li, a, .btn, nav a {
+            font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--divider);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--body-text);
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1.07;
+            letter-spacing: -0.28px;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .name-en {
+            display: block;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.196px;
+        }
+
+        .hero-text .tagline {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--accent-warm);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-text .intro {
+            font-size: 17px;
+            line-height: 1.47;
+            color: var(--body-text);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-focus);
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: var(--surface-light);
+            color: var(--primary);
+            border: 1px solid var(--hairline);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-light-blue);
+            border-color: var(--primary);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--surface-light);
+            box-shadow: none;
+            border: 1px solid var(--divider);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Spacing */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        section h2 {
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-warm);
+            margin-top: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 2px;
+        }
+
+        /* Strengths Section */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .strength-card {
+            background: var(--canvas);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+            text-align: center;
+        }
+
+        .strength-card:hover {
+            border-color: var(--primary);
+        }
+
+        .strength-icon {
+            font-size: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .strength-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .strength-card p {
+            font-size: 14px;
+            color: var(--body-muted);
+            line-height: 1.5;
+        }
+
+        /* Skills Section */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--surface-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            border: 1px solid var(--divider);
+            border-left: 3px solid var(--primary);
+        }
+
+        .skill-item h4 {
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            color: var(--body-text);
+            font-size: 14px;
+        }
+
+        /* Featured Works Section */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--canvas);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: none;
+            transition: border-color 0.3s ease;
+            border: 1px solid var(--divider);
+        }
+
+        .work-card:hover {
+            border-color: var(--primary);
+        }
+
+        .work-card-header {
+            background: var(--surface-light);
+            padding: 2rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .work-card-header h3 {
+            color: var(--ink);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .work-card-header .subtitle {
+            display: block;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .work-card-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .work-card-body p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--body-text);
+            margin-bottom: 1rem;
+        }
+
+        .work-card-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .work-card-body li {
+            font-size: 13px;
+            color: var(--body-muted);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .work-card-body li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-warm);
+            font-weight: bold;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: var(--divider);
+        }
+
+        .timeline-items {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 1;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            grid-column: 2;
+            justify-self: start;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            grid-column: 1;
+            justify-self: end;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: none;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--surface-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--divider);
+            border-left: 3px solid var(--primary);
+        }
+
+        .timeline-content h4 {
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .timeline-year {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content p {
+            color: var(--body-text);
+            font-size: 14px;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                grid-column: 1;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                grid-column: 1;
+                justify-self: start;
+                margin-left: -16px;
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--surface-light);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--divider);
+        }
+
+        .about-content p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--body-text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--surface-light);
+            color: var(--body-text);
+            text-align: center;
+            border-radius: 8px;
+            padding: 4rem 2rem;
+            border: 1px solid var(--divider);
+        }
+
+        .contact-section h2 {
+            color: var(--ink);
+        }
+
+        .contact-section h2::after {
+            background: var(--accent-warm);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: var(--accent-warm);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 1.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .avatar {
+                width: 200px;
+                height: 200px;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            section {
+                padding: 40px 1.5rem;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#strengths">Strengths</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="name-en">Jean Cheng</span>
+            <h1>鄭晨恩</h1>
+            <p class="tagline">我是不乏於在「異質文化」邊界尋找解答的學習者</p>
+            <p class="intro">Sophomore at National Taipei University of Business | Cultural Curation × Strategic Marketing × Brand Experience</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="https://jeancheng.my.canva.site" target="_blank" class="btn btn-secondary">Portfolio</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="avatar">
+                <img src="img/DSCF5139.JPG" alt="Jean Cheng">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I'm Jean, a sophomore at National Taipei University of Business, studying Culture Event Development. My passion lies at the intersection of cultural curation, strategic marketing, and brand experience design.</p>
+            <p>With experience in cultural translation, audience behavior research, and cross-cultural communication, I believe in transforming deep cultural insights into sensory experiences that resonate with audiences and create social value.</p>
+            <p>I'm particularly drawn to projects that bridge cultural gaps, redefine traditional perceptions, and unlock new possibilities through creative storytelling and strategic planning.</p>
+        </div>
+    </section>
+
+    <!-- Strengths Section -->
+    <section id="strengths">
+        <h2>Personal Strengths</h2>
+        <div class="strengths-grid">
+            <div class="strength-card">
+                <div class="strength-icon">🌍</div>
+                <h3>Strong English Proficiency</h3>
+                <p>IELTS Average 6.5 | Reading 8.5 | Experience in cross-cultural communication</p>
+            </div>
+            <div class="strength-card">
+                <div class="strength-icon">📖</div>
+                <h3>Cultural Storytelling</h3>
+                <p>Skilled at deconstructing cultural archives into emotionally resonant narratives</p>
+            </div>
+            <div class="strength-card">
+                <div class="strength-icon">🧭</div>
+                <h3>Team Leadership</h3>
+                <p>Warm and rational anchor who brings clarity to chaos and guides teams toward core objectives</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Key Skills</h2>
+        <div class="skills-list">
+            <div class="skill-item">
+                <h4>🎓 English Proficiency</h4>
+                <p>IELTS Average 6.5, Reading 8.5</p>
+            </div>
+            <div class="skill-item">
+                <h4>✍️ Marketing Copywriting</h4>
+                <p>Strategic messaging and brand voice development</p>
+            </div>
+            <div class="skill-item">
+                <h4>🎨 Exhibition Curation</h4>
+                <p>Exhibition planning, audience experience design, cultural translation</p>
+            </div>
+            <div class="skill-item">
+                <h4>📸 Product Photography</h4>
+                <p>Visual storytelling and product presentation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Works Section -->
+    <section id="works">
+        <h2>Featured Works</h2>
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div>
+                        <h3>Audience Behavior Research</h3>
+                        <span class="subtitle">Contemporary Art Museum</span>
+                    </div>
+                </div>
+                <div class="work-card-body">
+                    <p><strong>Clean Room, Reeling Room: Eunhee Lee Solo Exhibition (2025)</strong></p>
+                    <p>Led on-site observation and interviews to study information legibility and audience behavior during the archive artification process.</p>
+                    <ul>
+                        <li>Identified exhibition noise and subtitle interference issues</li>
+                        <li>Proposed acoustic treatment and subtitle optimization</li>
+                        <li>Enhanced visitor experience through data-driven solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div>
+                        <h3>Cultural Education Initiative</h3>
+                        <span class="subtitle">Palace Museum</span>
+                    </div>
+                </div>
+                <div class="work-card-body">
+                    <p><strong>The Puzzle Exploration Project (2025)</strong></p>
+                    <p>Designed immersive, gamified learning experience for families, translating complex cultural artifacts into accessible narratives.</p>
+                    <ul>
+                        <li>Integrated museum artifacts with AI voice and physical puzzles</li>
+                        <li>Framed as "Emergency Restoration Lab" mission for engagement</li>
+                        <li>Reduced cultural complexity through systematic fragmentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div>
+                        <h3>Style & Branding Project</h3>
+                        <span class="subtitle">Campus Event</span>
+                    </div>
+                </div>
+                <div class="work-card-body">
+                    <p><strong>"What's Your Style? Taiwanese!" — Clothing Market (2025)</strong></p>
+                    <p>Redefined "Taiwanese style" through collaborative brand partnerships and creative reinterpretation of cultural aesthetics.</p>
+                    <ul>
+                        <li>Broke stereotypes about local fashion identity</li>
+                        <li>Established functional aesthetic principles</li>
+                        <li>Empowered participants with confident personal style</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section id="journey">
+        <h2>Growth Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h4>Taipei Business University</h4>
+                        <p>Completed 5-year program in Business Management</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h4>RMIT University Exchange</h4>
+                        <p>Studied Advertising & Communication at Royal Melbourne Institute of Technology</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024-2025</div>
+                        <h4>Innovation & Entrepreneurship</h4>
+                        <p>Award recipient for 1st place proposal in Innovation & Entrepreneurship course</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h4>Cultural Projects</h4>
+                        <p>Leading multiple cultural curation and strategic marketing initiatives at institutional level</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Let's Connect</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>✉️</span>
+                <a href="mailto:jean08290829@gmail.com">jean08290829@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span>🌐</span>
+                <a href="https://jeancheng.my.canva.site" target="_blank">Portfolio Website</a>
+            </div>
+        </div>
+        <p style="margin-bottom: 0; opacity: 0.9;">Feel free to reach out to discuss cultural curation, marketing strategy, or exciting collaboration opportunities.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Jean Cheng | 鄭晨恩 | Designed with passion for cultural connection</p>
+    </footer>
+</body>
+</html>
