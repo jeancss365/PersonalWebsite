@@ -32,6 +32,8 @@
             min-height: 100vh;
             background: linear-gradient(120deg, #f8f2e8 0%, #f1e1d2 35%, #d8ba9b 65%, #c6a484 100%);
             background-size: 300% 300%;
+            background-image: linear-gradient(120deg, #f8f2e8 0%, #f1e1d2 35%, #d8ba9b 65%, #c6a484 100%),
+                              repeating-linear-gradient( 45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 1px, transparent 12px );
             color: var(--body-text);
             line-height: 1.7;
             overflow-x: hidden;
@@ -47,6 +49,16 @@
             inset: 0;
             background: radial-gradient(circle at top left, rgba(255,243,229,0.18), transparent 22%),
                         radial-gradient(circle at bottom right, rgba(222,193,159,0.14), transparent 18%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 1px, transparent 1px, transparent 16px);
+            opacity: 0.25;
             pointer-events: none;
             z-index: -1;
         }
@@ -102,7 +114,8 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 3rem;
-            background: rgba(255, 250, 245, 0.82);
+            background: rgba(255, 250, 245, 0.90);
+            background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 1px, transparent 1px, transparent 12px);
             border-radius: 32px;
             box-shadow: 0 30px 80px rgba(100, 79, 53, 0.10);
             border: 1px solid rgba(222, 191, 154, 0.25);
@@ -244,6 +257,7 @@
 
         .strength-card {
             background: var(--surface-light);
+            background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 1px, transparent 10px);
             border: 1px solid var(--divider);
             border-radius: 16px;
             padding: 2rem;
@@ -310,6 +324,7 @@
 
         .work-card {
             background: var(--surface-light);
+            background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 1px, transparent 10px);
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 16px 40px rgba(97, 72, 51, 0.08);
