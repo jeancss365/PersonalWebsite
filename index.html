@@ -83,15 +83,18 @@
             border-bottom: 1px solid var(--divider);
             padding: 1rem 2rem;
             z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav ul {
-            max-width: 1200px;
-            margin: 0 auto;
+            margin: 0;
             display: flex;
             justify-content: center;
             gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -104,6 +107,40 @@
 
         nav a:hover {
             color: var(--primary);
+        }
+
+        .language-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            appearance: none;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--body-text);
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: rgba(142, 111, 80, 0.08);
+            border-color: rgba(142, 111, 80, 0.22);
+            color: var(--ink);
+        }
+
+        .lang {
+            display: none !important;
+        }
+
+        body[data-lang="zh"] .lang-zh,
+        body[data-lang="en"] .lang-en {
+            display: initial !important;
         }
 
         /* Hero Section */
@@ -625,29 +662,39 @@
         }
     </style>
 </head>
-<body>
+<body data-lang="zh">
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#strengths">Strengths</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about"><span class="lang lang-zh">關於</span><span class="lang lang-en">About</span></a></li>
+            <li><a href="#strengths"><span class="lang lang-zh">優勢</span><span class="lang lang-en">Strengths</span></a></li>
+            <li><a href="#skills"><span class="lang lang-zh">技能</span><span class="lang lang-en">Skills</span></a></li>
+            <li><a href="#works"><span class="lang lang-zh">作品</span><span class="lang lang-en">Works</span></a></li>
+            <li><a href="#journey"><span class="lang lang-zh">歷程</span><span class="lang lang-en">Journey</span></a></li>
+            <li><a href="#contact"><span class="lang lang-zh">聯絡</span><span class="lang lang-en">Contact</span></a></li>
         </ul>
+        <div class="language-switch">
+            <button type="button" class="lang-btn" data-lang="zh">中文</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-text">
             <span class="name-en">Jean Cheng</span>
-            <h1>鄭晨恩</h1>
-            <p class="tagline">我是不乏於在「異質文化」邊界尋找解答的學習者</p>
-            <p class="intro">Sophomore at National Taipei University of Business | Cultural Curation × Strategic Marketing × Brand Experience</p>
+            <h1><span class="lang lang-zh">鄭晨恩</span><span class="lang lang-en">Jean Cheng</span></h1>
+            <p class="tagline">
+                <span class="lang lang-zh">我是不乏於在「異質文化」邊界尋找解答的學習者</span>
+                <span class="lang lang-en">A learner who finds meaning at the intersection of diverse cultures.</span>
+            </p>
+            <p class="intro">
+                <span class="lang lang-zh">台北商業大學二年級 | 文化策展 × 策略行銷 × 品牌體驗</span>
+                <span class="lang lang-en">Sophomore at National Taipei University of Business | Cultural Curation × Strategic Marketing × Brand Experience</span>
+            </p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                <a href="https://jeancheng.my.canva.site" target="_blank" class="btn btn-secondary">Portfolio</a>
+                <a href="#contact" class="btn btn-primary"><span class="lang lang-zh">聯絡我</span><span class="lang lang-en">Get in Touch</span></a>
+                <a href="https://jeancheng.my.canva.site" target="_blank" class="btn btn-secondary"><span class="lang lang-zh">作品集</span><span class="lang lang-en">Portfolio</span></a>
             </div>
         </div>
         <div class="hero-image">
@@ -659,77 +706,91 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
+        <h2><span class="lang lang-zh">關於我</span><span class="lang lang-en">About Me</span></h2>
         <div class="about-content">
-            <p>I'm Jean, a sophomore at National Taipei University of Business, studying Culture Event Development. My passion lies at the intersection of cultural curation, strategic marketing, and brand experience design.</p>
-            <p>With experience in cultural translation, audience behavior research, and cross-cultural communication, I believe in transforming deep cultural insights into sensory experiences that resonate with audiences and create social value.</p>
-            <p>I'm particularly drawn to projects that bridge cultural gaps, redefine traditional perceptions, and unlock new possibilities through creative storytelling and strategic planning.</p>
+            <p class="lang lang-zh">我是 Jean，台北商業大學文化創意產業系二年級學生。我熱衷於文化策展、策略行銷與品牌體驗設計之間的創意整合。</p>
+            <p class="lang lang-en">I'm Jean, a sophomore at National Taipei University of Business studying Culture Event Development. My passion lies at the intersection of cultural curation, strategic marketing, and brand experience design.</p>
+            <p class="lang lang-zh">我擁有文化翻譯、觀眾行為研究與跨文化溝通經驗，致力於將深度文化洞察轉化為與受眾共鳴、產生社會價值的感官體驗。</p>
+            <p class="lang lang-en">With experience in cultural translation, audience behavior research, and cross-cultural communication, I believe in transforming deep cultural insights into sensory experiences that resonate with audiences and create social value.</p>
+            <p class="lang lang-zh">我特別喜歡能跨越文化差異、重新定義傳統觀點，並透過創意敘事與策略規劃開啟新可能的專案。</p>
+            <p class="lang lang-en">I'm particularly drawn to projects that bridge cultural gaps, redefine traditional perceptions, and unlock new possibilities through creative storytelling and strategic planning.</p>
         </div>
     </section>
 
     <!-- Strengths Section -->
     <section id="strengths">
-        <h2>Personal Strengths</h2>
+        <h2><span class="lang lang-zh">個人優勢</span><span class="lang lang-en">Personal Strengths</span></h2>
         <div class="strengths-grid">
             <div class="strength-card">
                 <div class="strength-icon">🌍</div>
-                <h3>Strong English Proficiency</h3>
-                <p>IELTS Average 6.5 | Reading 8.5 | Experience in cross-cultural communication</p>
+                <h3><span class="lang lang-zh">英文力佳</span><span class="lang lang-en">Strong English Proficiency</span></h3>
+                <p class="lang lang-zh">IELTS 平均 6.5 | 閱讀 8.5 | 具跨文化溝通經驗</p>
+                <p class="lang lang-en">IELTS Average 6.5 | Reading 8.5 | Experience in cross-cultural communication</p>
             </div>
             <div class="strength-card">
                 <div class="strength-icon">📖</div>
-                <h3>Cultural Storytelling</h3>
-                <p>Skilled at deconstructing cultural archives into emotionally resonant narratives</p>
+                <h3><span class="lang lang-zh">文化敘事</span><span class="lang lang-en">Cultural Storytelling</span></h3>
+                <p class="lang lang-zh">善於拆解文化檔案，轉化為情感共鳴的敘事內容</p>
+                <p class="lang lang-en">Skilled at deconstructing cultural archives into emotionally resonant narratives</p>
             </div>
             <div class="strength-card">
                 <div class="strength-icon">🧭</div>
-                <h3>Team Leadership</h3>
-                <p>Warm and rational anchor who brings clarity to chaos and guides teams toward core objectives</p>
+                <h3><span class="lang lang-zh">團隊領導</span><span class="lang lang-en">Team Leadership</span></h3>
+                <p class="lang lang-zh">溫暖且理性的支點，引導團隊聚焦核心目標</p>
+                <p class="lang lang-en">Warm and rational anchor who brings clarity to chaos and guides teams toward core objectives</p>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills">
-        <h2>Key Skills</h2>
+        <h2><span class="lang lang-zh">核心技能</span><span class="lang lang-en">Key Skills</span></h2>
         <div class="skills-list">
             <div class="skill-item">
-                <h4>🎓 English Proficiency</h4>
-                <p>IELTS Average 6.5, Reading 8.5</p>
+                <h4>🎓 <span class="lang lang-zh">英文能力</span><span class="lang lang-en">English Proficiency</span></h4>
+                <p class="lang lang-zh">IELTS 平均 6.5，閱讀 8.5</p>
+                <p class="lang lang-en">IELTS Average 6.5, Reading 8.5</p>
             </div>
             <div class="skill-item">
-                <h4>✍️ Marketing Copywriting</h4>
-                <p>Strategic messaging and brand voice development</p>
+                <h4>✍️ <span class="lang lang-zh">行銷文案</span><span class="lang lang-en">Marketing Copywriting</span></h4>
+                <p class="lang lang-zh">策略性訊息與品牌語氣建構</p>
+                <p class="lang lang-en">Strategic messaging and brand voice development</p>
             </div>
             <div class="skill-item">
-                <h4>🎨 Exhibition Curation</h4>
-                <p>Exhibition planning, audience experience design, cultural translation</p>
+                <h4>🎨 <span class="lang lang-zh">展覽策展</span><span class="lang lang-en">Exhibition Curation</span></h4>
+                <p class="lang lang-zh">展覽規劃、受眾體驗設計、文化翻譯</p>
+                <p class="lang lang-en">Exhibition planning, audience experience design, cultural translation</p>
             </div>
             <div class="skill-item">
-                <h4>📸 Product Photography</h4>
-                <p>Visual storytelling and product presentation</p>
+                <h4>📸 <span class="lang lang-zh">產品攝影</span><span class="lang lang-en">Product Photography</span></h4>
+                <p class="lang lang-zh">視覺敘事與產品呈現</p>
+                <p class="lang lang-en">Visual storytelling and product presentation</p>
             </div>
         </div>
     </section>
 
     <!-- Featured Works Section -->
     <section id="works">
-        <h2>Featured Works</h2>
+        <h2><span class="lang lang-zh">作品精選</span><span class="lang lang-en">Featured Works</span></h2>
         <div class="works-grid">
             <div class="work-card">
                 <div class="work-card-header">
                     <div>
-                        <h3>Audience Behavior Research</h3>
-                        <span class="subtitle">Contemporary Art Museum</span>
+                        <h3><span class="lang lang-zh">觀眾行為研究</span><span class="lang lang-en">Audience Behavior Research</span></h3>
+                        <span class="subtitle"><span class="lang lang-zh">當代藝術博物館</span><span class="lang lang-en">Contemporary Art Museum</span></span>
                     </div>
                 </div>
                 <div class="work-card-body">
-                    <p><strong>Clean Room, Reeling Room: Eunhee Lee Solo Exhibition (2025)</strong></p>
-                    <p>Led on-site observation and interviews to study information legibility and audience behavior during the archive artification process.</p>
+                    <p><strong><span class="lang lang-zh">《潔淨室，捲軸室》李恩熙個展（2025）</span><span class="lang lang-en">Clean Room, Reeling Room: Eunhee Lee Solo Exhibition (2025)</span></strong></p>
+                    <p class="lang lang-zh">在現場觀察與訪談中研究資訊可讀性與觀眾行為，並分析檔案藝術化過程中的展示體驗。</p>
+                    <p class="lang lang-en">Led on-site observation and interviews to study information legibility and audience behavior during the archive artification process.</p>
                     <ul>
-                        <li>Identified exhibition noise and subtitle interference issues</li>
-                        <li>Proposed acoustic treatment and subtitle optimization</li>
-                        <li>Enhanced visitor experience through data-driven solutions</li>
+                        <li class="lang lang-zh">發現展覽噪音與字幕干擾問題</li>
+                        <li class="lang lang-en">Identified exhibition noise and subtitle interference issues</li>
+                        <li class="lang lang-zh">提出聲學調整與字幕優化建議</li>
+                        <li class="lang lang-en">Proposed acoustic treatment and subtitle optimization</li>
+                        <li class="lang lang-zh">透過數據驅動提升參觀者體驗</li>
+                        <li class="lang lang-en">Enhanced visitor experience through data-driven solutions</li>
                     </ul>
                 </div>
             </div>
@@ -737,17 +798,21 @@
             <div class="work-card">
                 <div class="work-card-header">
                     <div>
-                        <h3>Cultural Education Initiative</h3>
-                        <span class="subtitle">Palace Museum</span>
+                        <h3><span class="lang lang-zh">文化教育計畫</span><span class="lang lang-en">Cultural Education Initiative</span></h3>
+                        <span class="subtitle"><span class="lang lang-zh">故宮博物院</span><span class="lang lang-en">Palace Museum</span></span>
                     </div>
                 </div>
                 <div class="work-card-body">
-                    <p><strong>The Puzzle Exploration Project (2025)</strong></p>
-                    <p>Designed immersive, gamified learning experience for families, translating complex cultural artifacts into accessible narratives.</p>
+                    <p><strong><span class="lang lang-zh">《拼圖探索計畫》（2025）</span><span class="lang lang-en">The Puzzle Exploration Project (2025)</span></strong></p>
+                    <p class="lang lang-zh">為親子家庭設計沉浸式遊戲化學習體驗，將複雜文化文物轉化為易理解的敘事。</p>
+                    <p class="lang lang-en">Designed immersive, gamified learning experience for families, translating complex cultural artifacts into accessible narratives.</p>
                     <ul>
-                        <li>Integrated museum artifacts with AI voice and physical puzzles</li>
-                        <li>Framed as "Emergency Restoration Lab" mission for engagement</li>
-                        <li>Reduced cultural complexity through systematic fragmentation</li>
+                        <li class="lang lang-zh">結合博物館文物、AI 語音與實體拼圖</li>
+                        <li class="lang lang-en">Integrated museum artifacts with AI voice and physical puzzles</li>
+                        <li class="lang lang-zh">以「緊急修復實驗室」為主題提高參與度</li>
+                        <li class="lang lang-en">Framed as "Emergency Restoration Lab" mission for engagement</li>
+                        <li class="lang lang-zh">以系統性拆解降低文化複雜度</li>
+                        <li class="lang lang-en">Reduced cultural complexity through systematic fragmentation</li>
                     </ul>
                 </div>
             </div>
@@ -755,17 +820,21 @@
             <div class="work-card">
                 <div class="work-card-header">
                     <div>
-                        <h3>Style & Branding Project</h3>
-                        <span class="subtitle">Campus Event</span>
+                        <h3><span class="lang lang-zh">風格與品牌專案</span><span class="lang lang-en">Style & Branding Project</span></h3>
+                        <span class="subtitle"><span class="lang lang-zh">校園活動</span><span class="lang lang-en">Campus Event</span></span>
                     </div>
                 </div>
                 <div class="work-card-body">
-                    <p><strong>"What's Your Style? Taiwanese!" — Clothing Market (2025)</strong></p>
-                    <p>Redefined "Taiwanese style" through collaborative brand partnerships and creative reinterpretation of cultural aesthetics.</p>
+                    <p><strong><span class="lang lang-zh">「你的風格是台灣的嗎？」服飾市集（2025）</span><span class="lang lang-en">"What's Your Style? Taiwanese!" — Clothing Market (2025)</span></strong></p>
+                    <p class="lang lang-zh">透過品牌合作與文化美學再造，重新定義「台灣風格」的表現形式。</p>
+                    <p class="lang lang-en">Redefined "Taiwanese style" through collaborative brand partnerships and creative reinterpretation of cultural aesthetics.</p>
                     <ul>
-                        <li>Broke stereotypes about local fashion identity</li>
-                        <li>Established functional aesthetic principles</li>
-                        <li>Empowered participants with confident personal style</li>
+                        <li class="lang lang-zh">突破在地時尚身份刻板印象</li>
+                        <li class="lang lang-en">Broke stereotypes about local fashion identity</li>
+                        <li class="lang lang-zh">建立功能性美學原則</li>
+                        <li class="lang lang-en">Established functional aesthetic principles</li>
+                        <li class="lang lang-zh">讓參與者更有自信地表現個人風格</li>
+                        <li class="lang lang-en">Empowered participants with confident personal style</li>
                     </ul>
                 </div>
             </div>
@@ -774,15 +843,16 @@
 
     <!-- Journey Timeline Section -->
     <section id="journey">
-        <h2>Growth Timeline</h2>
+        <h2><span class="lang lang-zh">成長歷程</span><span class="lang lang-en">Growth Timeline</span></h2>
         <div class="timeline">
             <div class="timeline-items">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2023</div>
-                        <h4>Taipei Business University</h4>
-                        <p>Completed 5-year program in Business Management</p>
+                        <h4><span class="lang lang-zh">台北商業大學</span><span class="lang lang-en">Taipei Business University</span></h4>
+                        <p class="lang lang-zh">完成商業管理 5 年一貫課程</p>
+                        <p class="lang lang-en">Completed 5-year program in Business Management</p>
                     </div>
                 </div>
 
@@ -790,8 +860,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2024</div>
-                        <h4>RMIT University Exchange</h4>
-                        <p>Studied Advertising & Communication at Royal Melbourne Institute of Technology</p>
+                        <h4><span class="lang lang-zh">RMIT 大學交換</span><span class="lang lang-en">RMIT University Exchange</span></h4>
+                        <p class="lang lang-zh">在皇家墨爾本理工大學修習廣告與傳播</p>
+                        <p class="lang lang-en">Studied Advertising & Communication at Royal Melbourne Institute of Technology</p>
                     </div>
                 </div>
 
@@ -799,8 +870,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2024-2025</div>
-                        <h4>Innovation & Entrepreneurship</h4>
-                        <p>Award recipient for 1st place proposal in Innovation & Entrepreneurship course</p>
+                        <h4><span class="lang lang-zh">創新與創業</span><span class="lang lang-en">Innovation & Entrepreneurship</span></h4>
+                        <p class="lang lang-zh">榮獲創新與創業課程提案第一名</p>
+                        <p class="lang lang-en">Award recipient for 1st place proposal in Innovation & Entrepreneurship course</p>
                     </div>
                 </div>
 
@@ -808,8 +880,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2025</div>
-                        <h4>Cultural Projects</h4>
-                        <p>Leading multiple cultural curation and strategic marketing initiatives at institutional level</p>
+                        <h4><span class="lang lang-zh">文化專案</span><span class="lang lang-en">Cultural Projects</span></h4>
+                        <p class="lang lang-zh">帶領多項單位級文化策展與策略行銷專案</p>
+                        <p class="lang lang-en">Leading multiple cultural curation and strategic marketing initiatives at institutional level</p>
                     </div>
                 </div>
             </div>
@@ -818,7 +891,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2>Let's Connect</h2>
+        <h2><span class="lang lang-zh">一起聯繫</span><span class="lang lang-en">Let's Connect</span></h2>
         <div class="contact-info">
             <div class="contact-item">
                 <span>✉️</span>
@@ -826,15 +899,36 @@
             </div>
             <div class="contact-item">
                 <span>🌐</span>
-                <a href="https://jeancheng.my.canva.site" target="_blank">Portfolio Website</a>
+                <a href="https://jeancheng.my.canva.site" target="_blank"><span class="lang lang-zh">作品集網站</span><span class="lang lang-en">Portfolio Website</span></a>
             </div>
         </div>
-        <p style="margin-bottom: 0; opacity: 0.9;">Feel free to reach out to discuss cultural curation, marketing strategy, or exciting collaboration opportunities.</p>
+        <p class="lang lang-zh" style="margin-bottom: 0; opacity: 0.9;">歡迎隨時聯絡我，討論文化策展、行銷策略或合作機會。</p>
+        <p class="lang lang-en" style="margin-bottom: 0; opacity: 0.9;">Feel free to reach out to discuss cultural curation, marketing strategy, or exciting collaboration opportunities.</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Jean Cheng | 鄭晨恩 | Designed with passion for cultural connection</p>
+        <p><span class="lang lang-zh">&copy; 2025 鄭晨恩 | Jean Cheng | 用心設計文化連結</span><span class="lang lang-en">&copy; 2025 Jean Cheng | 鄭晨恩 | Designed with passion for cultural connection</span></p>
     </footer>
+
+    <script>
+        const languageButtons = document.querySelectorAll('.lang-btn');
+        const setLanguage = (lang) => {
+            const normalized = lang === 'en' ? 'en' : 'zh';
+            document.body.dataset.lang = normalized;
+            document.documentElement.lang = normalized === 'en' ? 'en' : 'zh-TW';
+            localStorage.setItem('preferredLanguage', normalized);
+            languageButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === normalized);
+            });
+        };
+
+        languageButtons.forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        const savedLang = localStorage.getItem('preferredLanguage');
+        setLanguage(savedLang === 'en' ? 'en' : 'zh');
+    </script>
 </body>
 </html>
