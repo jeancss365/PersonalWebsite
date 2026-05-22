@@ -12,29 +12,43 @@
         }
 
         :root {
-            --primary: #999999;
-            --primary-focus: #888888;
-            --primary-light: #aaaaaa;
-            --accent-warm: #d4c5b9;
-            --accent-light-blue: #f5f3f0;
-            --ink: #2a2a2a;
-            --body-text: #4a4a4a;
-            --body-muted: #8a8a8a;
-            --canvas: #fefdfb;
-            --surface-light: #f5f3f0;
-            --surface-pale: #faf9f7;
-            --divider: #ebe9e6;
-            --hairline: #ddd9d3;
+            --primary: #8e6f50;
+            --primary-focus: #7a5f45;
+            --primary-light: #c0a58a;
+            --accent-warm: #d8b49d;
+            --accent-light-blue: #f2efe7;
+            --ink: #3b342d;
+            --body-text: #53483f;
+            --body-muted: #7b6e66;
+            --canvas: #f5efe6;
+            --surface-light: #fbf7f1;
+            --surface-pale: #eee4d9;
+            --divider: #ddc9b7;
+            --hairline: #dcc8b3;
         }
 
         body {
             font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
-            background: var(--canvas);
+            min-height: 100vh;
+            background: linear-gradient(120deg, #f8f2e8 0%, #f1e1d2 35%, #d8ba9b 65%, #c6a484 100%);
+            background-size: 300% 300%;
             color: var(--body-text);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            animation: gradientBG 18s ease infinite;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255,243,229,0.18), transparent 22%),
+                        radial-gradient(circle at bottom right, rgba(222,193,159,0.14), transparent 18%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         h1, h2, h3, h4 {
@@ -51,7 +65,7 @@
         nav {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(250, 243, 233, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--divider);
             padding: 1rem 2rem;
@@ -88,6 +102,10 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 3rem;
+            background: rgba(255, 250, 245, 0.82);
+            border-radius: 32px;
+            box-shadow: 0 30px 80px rgba(100, 79, 53, 0.10);
+            border: 1px solid rgba(222, 191, 154, 0.25);
         }
 
         .hero-text h1 {
@@ -111,7 +129,7 @@
         .hero-text .tagline {
             font-size: 21px;
             font-weight: 600;
-            color: var(--accent-warm);
+            color: var(--primary-focus);
             margin-bottom: 1.5rem;
             line-height: 1.3;
         }
@@ -225,11 +243,11 @@
         }
 
         .strength-card {
-            background: var(--canvas);
+            background: var(--surface-light);
             border: 1px solid var(--divider);
-            border-radius: 8px;
+            border-radius: 16px;
             padding: 2rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, transform 0.3s ease;
             text-align: center;
         }
 
@@ -291,11 +309,11 @@
         }
 
         .work-card {
-            background: var(--canvas);
-            border-radius: 8px;
+            background: var(--surface-light);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: none;
-            transition: border-color 0.3s ease;
+            box-shadow: 0 16px 40px rgba(97, 72, 51, 0.08);
+            transition: border-color 0.3s ease, transform 0.3s ease;
             border: 1px solid var(--divider);
         }
 
@@ -546,6 +564,18 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Responsive */
