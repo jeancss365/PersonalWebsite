@@ -12,30 +12,31 @@
         }
 
         :root {
-            --primary: #8e6f50;
-            --primary-focus: #7a5f45;
-            --primary-light: #c0a58a;
-            --accent-warm: #d8b49d;
-            --accent-light-blue: #f2efe7;
-            --ink: #3b342d;
-            --body-text: #53483f;
-            --body-muted: #7b6e66;
-            --canvas: #f5efe6;
-            --surface-light: #fbf7f1;
-            --surface-pale: #eee4d9;
-            --divider: #ddc9b7;
-            --hairline: #dcc8b3;
+            --primary: #5c7a8a;
+            --primary-focus: #4a6878;
+            --primary-light: #a8bed0;
+            --accent-warm: #92b0b8;
+            --accent-light-blue: #edf4f6;
+            --ink: #22303d;
+            --body-text: #3f4e5a;
+            --body-muted: #6b7a85;
+            --canvas: #f4f7f8;
+            --surface-light: #f8fafb;
+            --surface-pale: #e8eef2;
+            --divider: #c8d2d9;
+            --hairline: #d5dfe7;
         }
 
         body {
             font-family: 'Kaiti TC', 'STKaiti', 'DFKai-SB', 'BiauKai', Georgia, 'Times New Roman', serif;
+            font-size: 18px;
             min-height: 100vh;
-            background: linear-gradient(120deg, #f8f2e8 0%, #f1e1d2 35%, #d8ba9b 65%, #c6a484 100%);
+            background: linear-gradient(120deg, #f4f7f8 0%, #e8eff3 35%, #d4e0e8 65%, #c7d8e1 100%);
             background-size: 300% 300%;
-            background-image: linear-gradient(120deg, #f8f2e8 0%, #f1e1d2 35%, #d8ba9b 65%, #c6a484 100%),
+            background-image: linear-gradient(120deg, #f4f7f8 0%, #e8eff3 35%, #d4e0e8 65%, #c7d8e1 100%),
                               repeating-linear-gradient( 45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 1px, transparent 12px );
             color: var(--body-text);
-            line-height: 1.7;
+            line-height: 1.85;
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
@@ -68,6 +69,22 @@
             letter-spacing: 0.04em;
             color: var(--ink);
             font-weight: 400;
+        }
+
+        h1 {
+            font-size: 72px;
+        }
+
+        h2 {
+            font-size: 48px;
+        }
+
+        h3 {
+            font-size: 22px;
+        }
+
+        h4 {
+            font-size: 18px;
         }
 
         p, li, a, .btn, nav a {
@@ -138,6 +155,10 @@
             display: none !important;
         }
 
+        .lang-zh {
+            font-family: 'MingLiU', 'PMingLiU', 'Mingti', '明體', 'Times New Roman', serif;
+        }
+
         body[data-lang="zh"] .lang-zh,
         body[data-lang="en"] .lang-en {
             display: initial !important;
@@ -145,67 +166,72 @@
 
         /* Hero Section */
         .hero {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 2rem;
+            padding: 70px 2.5rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
-            gap: 3rem;
-            background: rgba(255, 250, 245, 0.90);
-            background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 1px, transparent 1px, transparent 12px);
-            border-radius: 32px;
-            box-shadow: 0 30px 80px rgba(100, 79, 53, 0.10);
-            border: 1px solid rgba(222, 191, 154, 0.25);
+            gap: 3.5rem;
+            background: rgba(244, 247, 248, 0.94);
+            background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 12px);
+            border-radius: 36px;
+            box-shadow: 0 32px 90px rgba(79, 104, 118, 0.08);
+            border: 1px solid rgba(200, 210, 217, 0.35);
+        }
+
+        .hero-text {
+            max-width: 650px;
         }
 
         .hero-text h1 {
-            font-size: 56px;
+            font-size: 72px;
             font-weight: 600;
-            line-height: 1.07;
-            letter-spacing: -0.28px;
+            line-height: 1.05;
+            letter-spacing: -0.32px;
             color: var(--ink);
             margin-bottom: 1.5rem;
         }
 
         .hero-text .name-en {
             display: block;
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 400;
             color: var(--primary);
             margin-bottom: 1rem;
-            letter-spacing: 0.196px;
+            letter-spacing: 0.2px;
         }
 
         .hero-text .tagline {
-            font-size: 21px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--primary-focus);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+            margin-bottom: 1.8rem;
+            line-height: 1.35;
         }
 
         .hero-text .intro {
-            font-size: 17px;
-            line-height: 1.47;
+            font-size: 19px;
+            line-height: 1.7;
             color: var(--body-text);
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             font-weight: 400;
+            max-width: 750px;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 14px 28px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
@@ -219,7 +245,7 @@
 
         .btn-primary:hover {
             background: var(--primary-focus);
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .btn-secondary {
@@ -235,14 +261,14 @@
 
         .hero-image {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
         }
 
         .avatar {
-            width: 300px;
-            height: 300px;
-            border-radius: 4px;
+            width: 360px;
+            height: 360px;
+            border-radius: 24px;
             overflow: hidden;
             background: var(--surface-light);
             box-shadow: none;
@@ -257,15 +283,15 @@
 
         /* Section Spacing */
         section {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 2rem;
+            padding: 100px 2rem;
         }
 
         section h2 {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: 600;
-            line-height: 1.1;
+            line-height: 1.05;
             color: var(--ink);
             margin-bottom: 3rem;
             text-align: center;
@@ -313,16 +339,16 @@
         }
 
         .strength-card h3 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--ink);
         }
 
         .strength-card p {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--body-muted);
-            line-height: 1.5;
+            line-height: 1.8;
         }
 
         /* Skills Section */
@@ -343,14 +369,15 @@
 
         .skill-item h4 {
             color: var(--ink);
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
         .skill-item p {
             color: var(--body-text);
-            font-size: 14px;
+            font-size: 16px;
+            line-height: 1.8;
         }
 
         /* Featured Works Section */
@@ -385,14 +412,14 @@
 
         .work-card-header h3 {
             color: var(--ink);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             line-height: 1.3;
         }
 
         .work-card-header .subtitle {
             display: block;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--primary);
             font-weight: 600;
             margin-top: 0.5rem;
@@ -546,14 +573,15 @@
         /* About Section */
         .about-content {
             background: var(--surface-light);
-            padding: 3rem;
-            border-radius: 8px;
+            padding: 3rem 3.5rem;
+            border-radius: 20px;
             border: 1px solid var(--divider);
+            box-shadow: 0 24px 40px rgba(125, 92, 67, 0.06);
         }
 
         .about-content p {
-            font-size: 17px;
-            line-height: 1.8;
+            font-size: 18px;
+            line-height: 1.85;
             color: var(--body-text);
             margin-bottom: 1.5rem;
         }
@@ -563,9 +591,10 @@
             background: var(--surface-light);
             color: var(--body-text);
             text-align: center;
-            border-radius: 8px;
-            padding: 4rem 2rem;
+            border-radius: 20px;
+            padding: 5rem 2rem;
             border: 1px solid var(--divider);
+            box-shadow: 0 24px 40px rgba(125, 92, 67, 0.05);
         }
 
         .contact-section h2 {
